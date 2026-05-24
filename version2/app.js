@@ -3,6 +3,36 @@
 // Wishlist data
 const WISHLIST_ITEMS = [
   {
+    title: '📊 Recommended Enhancements (Prioritized)',
+    content: [
+      '⭐ CRITICAL PRIORITY:',
+      '1. Skillset Ranking System (0-3 Scale)',
+      '   - 0 = Do not know the tool',
+      '   - 1 = Familiar with tool',
+      '   - 2 = Functional with tool',
+      '   - 3 = Expert in tool',
+      '   Impact: Foundation for accurate matching algorithm',
+      '',
+      '2. Mobile/Cell Phone Responsive View',
+      '   Impact: Critical for user adoption and accessibility',
+      '',
+      '🔷 HIGH PRIORITY:',
+      '3. Engineer Profile Expansion',
+      '   - Add interest tracks selection',
+      '   - Display recommended skillsets per track',
+      '   Impact: Career pathing and better engagement',
+      '',
+      '4. Project Description & Requirements Expansion',
+      '   - More complete project descriptions',
+      '   - Clearer talent requirements',
+      '   Impact: Improved matching accuracy',
+      '',
+      '🔹 MEDIUM PRIORITY:',
+      '5. General Profile Expansion (Engineers & Projects)',
+      '   Impact: Supporting details and enhancements'
+    ]
+  },
+  {
     title: '🏢 Expanded Civic Organizations',
     content: [
       'Add more nonprofit organizations including:',
@@ -126,11 +156,121 @@ const WISHLIST_ITEMS = [
 ];
 
 let currentWishlistSlide = 0;
+let currentOverviewSlide = 0;
+let currentAboutSlide = 0;
+
+// Global data variables (can be updated when loading from files)
+let OVERVIEW_ITEMS = null;
+let WISHLIST_ITEMS_LOADED = null;
+
+// Overview data
+const CLIENT_OVERVIEW_ITEMS = [
+  {
+    title: '1️⃣ Welcome - The Civic AI Initiative',
+    content: [
+      'Title: "Civic AI Corps"',
+      'Subtitle: "Building a Community Talent Network for Southern Arizona"',
+      'We are not placing apprentices; we are building a community talent network that helps public, nonprofit, and small business partners get more done with AI',
+      'Partners: Pima County, Per Scholas, AI-Trailblazers, Vantage West'
+    ]
+  },
+  {
+    title: '2️⃣ The Problem We\'re Solving',
+    content: [
+      'Growing gap between organizations needing AI skills and residents who could fill those roles',
+      'Community nonprofits, county offices, and small businesses lack trained people',
+      'Limited pathways into tech careers in underserved areas',
+      'No single organization can solve this alone',
+      'Coalition of 4 partners reaches 25,000+ residents combined'
+    ]
+  },
+  {
+    title: '3️⃣ The Solution - Civic Engineer Role',
+    content: [
+      'New Role: "Civic Engineer" (trained as "Automators")',
+      'Apprentices work directly inside organizations',
+      'Build secure "Copilots" and workflow automations',
+      'Real projects deployed to host organizations',
+      'Apprentices earn while learning',
+      'Portfolio of deployed work for future employers',
+      '',
+      'Benefits of Being a Civic Engineer:',
+      'Meaningful impact on community and public sector organizations',
+      'Earn competitive apprenticeship wages while building skills',
+      'Real-world project experience on your resume',
+      'Career pathway into AI and automation specialization',
+      'Support from mentors and learning network',
+      'Opportunity to advance into leadership and technical roles'
+    ]
+  },
+  {
+    title: '4️⃣ The Shared Ecosystem Engine',
+    content: [
+      '1. Pima Talent Match System (Apprentice-Built)',
+      '   - "Dating app" for workforce development',
+      '   - For Learners: Upload skills and badges',
+      '   - For Navigators: Live map of available talent',
+      '   - For Employers: Subscribe to talent feeds',
+      '2. Navigator & Coach Upskilling',
+      '   - "AI Super-User" Certification (2-day intensive)',
+      '   - Navigators become "High-Touch Career Architects"',
+      '   - AI handles overhead, focus on human connection',
+      '3. SciTech Education & Career Maps',
+      '   - Partnership to visualize "AI On-Ramp"',
+      '   - Update existing STEM ecosystem maps'
+    ]
+  },
+  {
+    title: '5️⃣ Option 1 - Modernizing Pima County Services',
+    content: [
+      '"We aren\'t just training employees; we are building Pima County\'s internal R&D lab"',
+      'Focus: Modernizing Pima County Services & Upskilling Government',
+      'Mechanism: Apprentices shadow Pima Navigators to build Copilots',
+      'Outcome: Navigators get time back; Apprentices get deployed projects',
+      'Partner collaboration on IT/Cybersecurity foundation + AI automation',
+      'Primary customer: Pima County as "First Customer"'
+    ]
+  },
+  {
+    title: '6️⃣ Option 2 - Micro-Agency Network for Small Business',
+    content: [
+      '"Don\'t wait for a corporation to hire you. Become the agency that saves Main Street"',
+      'Focus: Saving Local Businesses & Creating Entrepreneurs',
+      'New Role: "SMB Automation Specialist" / Micro-Agency Founders',
+      'Mechanism: Teams (IT grad + AI grad) paired with small businesses',
+      'Deliver "Business Starter Kit" - modernizing operations',
+      'Apprentices gain testimonials and start careers',
+      'Support for LLC formation and business banking through Vantage West'
+    ]
+  },
+  {
+    title: '7️⃣ Partner Roles & Ecosystem',
+    content: [
+      'Pima County: Recruits residents, acts as "First Customer", audits workflows',
+      'Per Scholas: Tucson Satellite, IT/Cybersecurity cohorts, learner support',
+      'AI-Trailblazers: AI Engineer curriculum, apprenticeship programs, mentorship',
+      'Vantage West: Financial wellness coaching, marketing, Micro-Agency Launchpad'
+    ]
+  },
+  {
+    title: '8️⃣ Civic AI Pilot Concierge Service',
+    content: [
+      'Problem: Procurement blocks quick AI pilots - months pass before anything ships',
+      'Solution: Fixed-fee 30-day pilot package',
+      '- Discovery, AI teammate buildout, training, ROI report',
+      '- Designed to fit under procurement thresholds',
+      '- Target: Public-sector IT leaders and college decision-makers',
+      'Skills Required: Sales, solutions engineering, security, customer success'
+    ]
+  }
+];
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
   initializeApp();
   initializeWishlist();
+  initializeOverview();
+  initializeAbout();
 });
 
 function initializeApp() {
@@ -160,11 +300,19 @@ function initializeApp() {
 
 // ===== Navigation =====
 function setupNavigation() {
-  document.querySelectorAll('.nav-link').forEach(link => {
+  // Handle data-view links
+  document.querySelectorAll('.nav-link[data-view]').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const view = e.target.getAttribute('data-view');
       switchView(view);
+    });
+  });
+
+  // Prevent default behavior on all nav-links with onclick
+  document.querySelectorAll('.nav-link[onclick]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
     });
   });
 }
@@ -188,6 +336,8 @@ function switchView(viewId) {
       loadEmployerDashboard();
     } else if (viewId === 'manage-developers') {
       loadManageDevelopersView();
+    } else if (viewId === 'view-engineers') {
+      loadViewEngineersView();
     } else if (viewId === 'manage-employers') {
       loadManageEmployersView();
     } else if (viewId === 'admin') {
@@ -201,50 +351,105 @@ function switchView(viewId) {
 // ===== Developer Management =====
 function setupDeveloperForm() {
   const form = document.getElementById('developer-form');
-  const skillsGroup = document.getElementById('skills-group');
+  const skillsGroup = document.getElementById('skills-rating-group');
 
-  // Generate skill checkboxes
+  // Track selected skills and their ratings
+  const skillRatings = {};
+
+  // Generate skill rating interface
   ALL_SKILLS.forEach(skill => {
-    const label = document.createElement('label');
-    label.className = 'checkbox-item';
-    label.innerHTML = `
-      <input type="checkbox" name="skills" value="${skill}">
-      <label>${skill}</label>
+    const row = document.createElement('div');
+    row.className = 'skill-rating-row';
+    row.innerHTML = `
+      <div class="skill-rating-name">${skill}</div>
+      <div class="skill-rating-stars">
+        <button type="button" class="skill-star-selector skill-star-0" data-skill="${skill}" data-level="0" title="Not Yet">☆</button>
+        <button type="button" class="skill-star-selector skill-star-1" data-skill="${skill}" data-level="1" title="Familiar">★</button>
+        <button type="button" class="skill-star-selector skill-star-2" data-skill="${skill}" data-level="2" title="Functional">★</button>
+        <button type="button" class="skill-star-selector skill-star-3" data-skill="${skill}" data-level="3" title="Expert">★</button>
+      </div>
     `;
-    skillsGroup.appendChild(label);
+    skillsGroup.appendChild(row);
+
+    // Add click handlers for stars
+    row.querySelectorAll('.skill-star-selector').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const skill = btn.dataset.skill;
+        const level = parseInt(btn.dataset.level);
+
+        // Update skill ratings
+        skillRatings[skill] = level;
+
+        // Update UI - remove all selected from this skill
+        row.querySelectorAll('.skill-star-selector').forEach(b => {
+          b.classList.remove('selected');
+        });
+
+        // Add selected class to clicked star and all before it
+        row.querySelectorAll('.skill-star-selector').forEach(b => {
+          if (parseInt(b.dataset.level) <= level) {
+            b.classList.add('selected');
+          }
+        });
+
+        // Update row background color based on level
+        row.classList.remove('has-level-1', 'has-level-2', 'has-level-3');
+        if (level === 1) {
+          row.classList.add('has-level-1');
+        } else if (level === 2) {
+          row.classList.add('has-level-2');
+        } else if (level === 3) {
+          row.classList.add('has-level-3');
+        }
+      });
+    });
   });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const selectedSkills = Array.from(form.querySelectorAll('input[name="skills"]:checked'))
-      .map(cb => cb.value);
-
-    if (selectedSkills.length === 0) {
+    if (Object.keys(skillRatings).length === 0) {
       alert('Please select at least one skill');
       return;
     }
+
+    // Get selected skills (only those with ratings)
+    const selectedSkills = Object.keys(skillRatings);
 
     const newDeveloper = {
       name: document.getElementById('dev-name').value,
       email: document.getElementById('dev-email').value,
       level: document.getElementById('dev-level').value,
-      skills: selectedSkills
+      skills: selectedSkills,
+      skillRankings: skillRatings
     };
 
     DataManager.addDeveloper(newDeveloper);
     form.reset();
-    alert('Developer added successfully!');
+
+    // Reset skill ratings for next form use
+    skillRatings = {};
+    document.querySelectorAll('.skill-star-selector.selected').forEach(btn => {
+      btn.classList.remove('selected');
+    });
+
+    alert('Civic Engineer added successfully!');
     loadManageDevelopersView();
   });
 }
 
 function loadManageDevelopersView() {
+  // This function now only handles the form setup
+  // The engineers list display has been moved to loadViewEngineersView
+}
+
+function loadViewEngineersView() {
   const developers = DataManager.getDevelopers();
-  const table = document.getElementById('developers-table');
+  const table = document.getElementById('engineers-table');
 
   if (developers.length === 0) {
-    table.innerHTML = '<p class="empty-state">No developers added yet</p>';
+    table.innerHTML = '<p class="empty-state">No Civic Engineers available</p>';
     return;
   }
 
@@ -266,7 +471,7 @@ function loadManageDevelopersView() {
             <td><div class="skills-list">${dev.skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}</div></td>
             <td>
               <div class="table-actions">
-                <button class="btn btn-small btn-secondary" onclick="editDeveloper(${dev.id})">Edit</button>
+                <button class="btn btn-small btn-primary" onclick="openSkillRanking(${dev.id})">⭐ Rate Skills</button>
                 <button class="btn btn-small btn-danger" onclick="deleteDeveloperConfirm(${dev.id})">Delete</button>
               </div>
             </td>
@@ -280,11 +485,10 @@ function loadManageDevelopersView() {
 }
 
 function deleteDeveloperConfirm(id) {
-  if (confirm('Are you sure you want to delete this developer?')) {
+  if (confirm('Are you sure you want to delete this Civic Engineer?')) {
     DataManager.deleteDeveloper(id);
-    loadManageDevelopersView();
+    loadViewEngineersView();
   }
-}
 
 function editDeveloper(id) {
   // This could be expanded to show an edit form
@@ -403,57 +607,142 @@ function editProject(id) {
 
 // ===== Dashboard Filters =====
 function setupDashboardFilters() {
-  const devFilter = document.getElementById('developer-filter');
   const empFilter = document.getElementById('employer-filter');
 
-  // Load developers
-  const developers = DataManager.getDevelopers();
-  developers.forEach(dev => {
-    const option = document.createElement('option');
-    option.value = dev.id;
-    option.textContent = `${dev.name} (${dev.level})`;
-    devFilter.appendChild(option);
-  });
+  if (empFilter) {
+    // Load organizations
+    const orgs = DataManager.getOrganizations();
+    orgs.forEach(org => {
+      const option = document.createElement('option');
+      option.value = org.id;
+      option.textContent = org.name;
+      empFilter.appendChild(option);
+    });
 
-  devFilter.addEventListener('change', (e) => {
-    if (e.target.value) {
-      loadDeveloperMatches(parseInt(e.target.value));
-    } else {
-      document.getElementById('developer-matches').innerHTML =
-        '<p class="empty-state">Select your profile to see matching opportunities</p>';
-    }
-  });
-
-  // Load organizations
-  const orgs = DataManager.getOrganizations();
-  orgs.forEach(org => {
-    const option = document.createElement('option');
-    option.value = org.id;
-    option.textContent = org.name;
-    empFilter.appendChild(option);
-  });
-
-  empFilter.addEventListener('change', (e) => {
-    if (e.target.value) {
-      loadEmployerMatches(parseInt(e.target.value));
-    } else {
-      document.getElementById('employer-matches').innerHTML =
-        '<p class="empty-state">Select your organization to see available talent matches</p>';
-    }
-  });
+    empFilter.addEventListener('change', (e) => {
+      if (e.target.value) {
+        loadEmployerMatches(parseInt(e.target.value));
+      } else {
+        document.getElementById('employer-matches').innerHTML =
+          '<p class="empty-state">Select your organization to see available talent matches</p>';
+      }
+    });
+  }
 }
 
 function loadDeveloperDashboard() {
   const developers = DataManager.getDevelopers();
-  const devFilter = document.getElementById('developer-filter');
-  devFilter.innerHTML = '<option value="">Select Your Profile...</option>';
+  const listContainer = document.getElementById('engineer-list');
 
-  developers.forEach(dev => {
-    const option = document.createElement('option');
-    option.value = dev.id;
-    option.textContent = `${dev.name} (${dev.level})`;
-    devFilter.appendChild(option);
+  if (developers.length === 0) {
+    listContainer.innerHTML = '<p class="empty-state">No engineers available</p>';
+    return;
+  }
+
+  listContainer.innerHTML = developers.map(dev => {
+    const skillRank = calculateEngineerSkillRank(dev);
+    return `
+      <div class="engineer-list-item" onclick="selectEngineer(${dev.id})" data-engineer-id="${dev.id}">
+        <span class="name">${dev.name}</span>
+        <span class="skill-rank">${skillRank}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+function calculateEngineerSkillRank(engineer) {
+  if (!engineer.skillRankings || Object.keys(engineer.skillRankings).length === 0) {
+    return '0/3';
+  }
+
+  const rankings = Object.values(engineer.skillRankings);
+  const avgRank = (rankings.reduce((a, b) => a + b, 0) / rankings.length).toFixed(1);
+  return `${avgRank}/3`;
+}
+
+function selectEngineer(engineerId) {
+  const developers = DataManager.getDevelopers();
+  const engineer = developers.find(d => d.id === engineerId);
+
+  if (!engineer) return;
+
+  // Update active state in list
+  document.querySelectorAll('.engineer-list-item').forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('data-engineer-id') === String(engineerId)) {
+      item.classList.add('active');
+    }
   });
+
+  // Display engineer details
+  displayEngineerDetails(engineer);
+
+  // Load and display matching projects
+  loadDeveloperMatches(engineerId);
+}
+
+function displayEngineerDetails(engineer) {
+  const container = document.getElementById('engineer-details');
+
+  const skillsList = (engineer.skills || []).map(skill => {
+    const ranking = engineer.skillRankings?.[skill] || 0;
+    const levelClass = `skill-level-${ranking}`;
+    const levelText = ['Not Yet', 'Familiar', 'Functional', 'Expert'][ranking];
+
+    return `
+      <div class="skill-item">
+        <span class="skill-name">${skill}</span>
+        <span class="skill-level ${levelClass}">${levelText}</span>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = `
+    <div class="engineer-card">
+      <div class="engineer-header">
+        <h2 class="engineer-name">${engineer.name}</h2>
+        <div class="engineer-meta">
+          <div class="engineer-meta-item">
+            <strong>Level:</strong>
+            <span>${engineer.level}</span>
+          </div>
+          <div class="engineer-meta-item">
+            <strong>Email:</strong>
+            <span>${engineer.email}</span>
+          </div>
+          <div class="engineer-meta-item">
+            <strong>Skills:</strong>
+            <span>${engineer.skills?.length || 0}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="engineer-skills">
+        <h4>Technical Skills</h4>
+        ${skillsList || '<p class="empty-state">No skills listed</p>'}
+      </div>
+
+      ${engineer.pathway ? `
+        <div style="border-top: 1px solid #e2e8f0; padding-top: 1rem;">
+          <h4>Learning Pathway</h4>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; font-size: 0.9rem;">
+            <div>
+              <strong>Stage:</strong> ${engineer.pathway.stage}
+            </div>
+            <div>
+              <strong>Provider:</strong> ${engineer.pathway.provider}
+            </div>
+            <div>
+              <strong>Status:</strong> ${engineer.pathway.status}
+            </div>
+            <div>
+              <strong>Start Date:</strong> ${engineer.pathway.startDate}
+            </div>
+          </div>
+        </div>
+      ` : ''}
+    </div>
+  `;
 }
 
 function loadEmployerDashboard() {
@@ -592,7 +881,7 @@ function loadAdminPanel() {
   // Update statistics
   document.getElementById('total-developers').textContent = data.developers.length;
   document.getElementById('total-projects').textContent = data.projects.length;
-  document.getElementById('total-employers').textContent = data.organizations.length;
+  document.getElementById('total-organizations').textContent = data.organizations.length;
   document.getElementById('total-skills').textContent = ALL_SKILLS.length;
 
   // Show raw data
@@ -739,4 +1028,477 @@ window.addEventListener('click', (event) => {
   if (event.target === modal) {
     closeWishlistModal();
   }
+  const overviewModal = document.getElementById('overview-modal');
+  if (event.target === overviewModal) {
+    closeOverviewModal();
+  }
+  const aboutModal = document.getElementById('about-modal');
+  if (event.target === aboutModal) {
+    closeAboutModal();
+  }
 });
+
+// ===== Overview Modal =====
+function initializeOverview() {
+  const slidesContainer = document.getElementById('overview-slides');
+  const indicatorsContainer = document.getElementById('overview-indicators');
+
+  // Use OVERVIEW_ITEMS if loaded, otherwise fall back to CLIENT_OVERVIEW_ITEMS
+  const items = window.OVERVIEW_ITEMS || CLIENT_OVERVIEW_ITEMS;
+
+  // Create slides
+  slidesContainer.innerHTML = items.map((item, index) => `
+    <div class="wishlist-slide ${index === 0 ? 'active' : ''}">
+      <h3>${item.title}</h3>
+      <ul>
+        ${item.content.map(point => `<li>${point}</li>`).join('')}
+      </ul>
+    </div>
+  `).join('');
+
+  // Create indicators
+  indicatorsContainer.innerHTML = items.map((_, index) => `
+    <div class="wishlist-indicator ${index === 0 ? 'active' : ''}" onclick="goToOverviewSlide(${index})"></div>
+  `).join('');
+
+  currentOverviewSlide = 0;
+}
+
+function openOverviewModal() {
+  const modal = document.getElementById('overview-modal');
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  updateOverviewButtons();
+}
+
+function closeOverviewModal() {
+  const modal = document.getElementById('overview-modal');
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+function nextOverviewSlide() {
+  const items = window.OVERVIEW_ITEMS || CLIENT_OVERVIEW_ITEMS;
+  if (currentOverviewSlide < items.length - 1) {
+    goToOverviewSlide(currentOverviewSlide + 1);
+  }
+}
+
+function previousOverviewSlide() {
+  if (currentOverviewSlide > 0) {
+    goToOverviewSlide(currentOverviewSlide - 1);
+  }
+}
+
+function goToOverviewSlide(index) {
+  // Hide current slide
+  const slides = document.querySelectorAll('#overview-slides .wishlist-slide');
+  const indicators = document.querySelectorAll('#overview-indicators .wishlist-indicator');
+
+  if (slides.length === 0) return;
+
+  slides[currentOverviewSlide].classList.remove('active');
+  slides[currentOverviewSlide].classList.add('prev');
+  indicators[currentOverviewSlide].classList.remove('active');
+
+  // Show new slide
+  currentOverviewSlide = index;
+  slides[currentOverviewSlide].classList.remove('prev');
+  slides[currentOverviewSlide].classList.add('active');
+  indicators[currentOverviewSlide].classList.add('active');
+
+  // Update button states
+  updateOverviewButtons();
+}
+
+function updateOverviewButtons() {
+  const controls = document.querySelector('#overview-modal .wishlist-controls');
+  if (!controls) return;
+
+  const backBtn = controls.querySelector('.wishlist-btn-nav:first-child');
+  const forwardBtn = controls.querySelector('.wishlist-btn-nav:last-child');
+
+  const items = window.OVERVIEW_ITEMS || CLIENT_OVERVIEW_ITEMS;
+  backBtn.disabled = currentOverviewSlide === 0;
+  forwardBtn.disabled = currentOverviewSlide === items.length - 1;
+}
+
+// ===== About Modal =====
+function initializeAbout() {
+  // No slide initialization needed for scrollable modal
+  currentAboutSlide = 0;
+}
+
+function openAboutModal() {
+  const modal = document.getElementById('about-modal');
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAboutModal() {
+  const modal = document.getElementById('about-modal');
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+// ===== File Viewer Modal =====
+let currentFileContext = {
+  fileName: '',
+  filePath: '',
+  originalContent: ''
+};
+
+const DATA_FILES = {
+  'Civic Engineers': {
+    path: 'version2/data/civic-engineers.json',
+    filename: 'civic-engineers.json'
+  },
+  'Organizations': {
+    path: 'version2/data/organizations.json',
+    filename: 'organizations.json'
+  },
+  'Projects': {
+    path: 'version2/data/projects.json',
+    filename: 'projects.json'
+  },
+  'Overview': {
+    path: 'version2/data/overview-content.json',
+    filename: 'overview-content.json'
+  },
+  'Wishlist': {
+    path: 'version2/data/wishlist-content.json',
+    filename: 'wishlist-content.json'
+  }
+};
+
+function loadDataFile(fileName, filePath) {
+  fetch('/' + filePath)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Get current application data
+      const appData = DataManager.getData();
+
+      // Load data into application based on file type
+      if (fileName === 'Civic Engineers') {
+        appData.developers = data;
+        DataManager.saveData(appData);
+        if (document.getElementById('developer-dashboard').classList.contains('active')) {
+          loadDeveloperDashboard();
+        }
+        alert(`✅ Loaded ${fileName} (${data.length} engineers)`);
+      } else if (fileName === 'Projects') {
+        appData.projects = data;
+        DataManager.saveData(appData);
+        if (document.getElementById('employer-dashboard').classList.contains('active')) {
+          loadProjectsDashboard();
+        }
+        alert(`✅ Loaded ${fileName} (${data.length} projects)`);
+      } else if (fileName === 'Organizations') {
+        appData.organizations = data;
+        DataManager.saveData(appData);
+        alert(`✅ Loaded ${fileName} (${data.length} organizations)`);
+      } else if (fileName === 'Overview') {
+        window.OVERVIEW_ITEMS = data;
+        initializeOverview();
+        alert(`✅ Loaded ${fileName} (${data.length} slides)`);
+      } else if (fileName === 'Wishlist') {
+        window.WISHLIST_ITEMS = data;
+        initializeWishlist();
+        alert(`✅ Loaded ${fileName} (${data.length} slides)`);
+      }
+
+      updateStats();
+    })
+    .catch(error => {
+      alert(`❌ Error loading ${fileName}: ${error.message}`);
+      console.error('Load error:', error);
+    });
+}
+
+function viewDataFile(fileName, filePath) {
+  const modal = document.getElementById('file-viewer-modal');
+  const titleEl = document.getElementById('file-viewer-title');
+  const contentEl = document.getElementById('file-viewer-content');
+  const viewModeActions = document.getElementById('view-mode-actions');
+  const editModeActions = document.getElementById('edit-mode-actions');
+
+  titleEl.textContent = fileName + ' (Read-Only)';
+
+  // Load file content
+  fetch('/' + filePath)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      const jsonString = JSON.stringify(data, null, 2);
+      contentEl.value = jsonString;
+      contentEl.readOnly = true;
+
+      // Store current file context
+      currentFileContext = {
+        fileName: fileName,
+        filePath: filePath,
+        originalContent: jsonString
+      };
+
+      // Show view mode actions
+      viewModeActions.style.display = 'flex';
+      editModeActions.style.display = 'none';
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    })
+    .catch(error => {
+      contentEl.value = 'Error loading file: ' + error.message;
+      contentEl.readOnly = true;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+}
+
+function editDataFile(fileName, filePath) {
+  const modal = document.getElementById('file-viewer-modal');
+  const titleEl = document.getElementById('file-viewer-title');
+  const contentEl = document.getElementById('file-viewer-content');
+  const viewModeActions = document.getElementById('view-mode-actions');
+  const editModeActions = document.getElementById('edit-mode-actions');
+
+  titleEl.textContent = fileName + ' (Editable)';
+
+  // Load file content
+  fetch('/' + filePath)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      const jsonString = JSON.stringify(data, null, 2);
+      contentEl.value = jsonString;
+      contentEl.readOnly = false;
+
+      // Store current file context
+      currentFileContext = {
+        fileName: fileName,
+        filePath: filePath,
+        originalContent: jsonString
+      };
+
+      // Show edit mode actions
+      viewModeActions.style.display = 'none';
+      editModeActions.style.display = 'flex';
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    })
+    .catch(error => {
+      contentEl.value = 'Error loading file: ' + error.message;
+      contentEl.readOnly = false;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+}
+
+function closeFileViewer() {
+  const modal = document.getElementById('file-viewer-modal');
+  const contentEl = document.getElementById('file-viewer-content');
+
+  // Reset content
+  contentEl.value = '';
+  contentEl.readOnly = true;
+  currentFileContext = { fileName: '', filePath: '', originalContent: '' };
+
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+function cancelEditMode() {
+  const contentEl = document.getElementById('file-viewer-content');
+
+  // Revert to original content without saving
+  contentEl.value = currentFileContext.originalContent;
+  closeFileViewer();
+}
+
+function downloadFile() {
+  const contentEl = document.getElementById('file-viewer-content');
+  const content = contentEl.value;
+
+  if (!currentFileContext.fileName) {
+    alert('No file open to download');
+    return;
+  }
+
+  try {
+    // Validate JSON
+    JSON.parse(content);
+
+    // Create blob and download
+    const blob = new Blob([content], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = DATA_FILES[currentFileContext.fileName].filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    alert('File downloaded: ' + link.download);
+  } catch (error) {
+    alert('Invalid JSON: ' + error.message);
+  }
+}
+
+function uploadFile() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const content = event.target.result;
+        const parsed = JSON.parse(content);
+
+        // Validate it's valid JSON
+        const contentEl = document.getElementById('file-viewer-content');
+        contentEl.value = JSON.stringify(parsed, null, 2);
+
+        alert('File uploaded and loaded. Remember to verify the data looks correct!');
+      } catch (error) {
+        alert('Invalid JSON file: ' + error.message);
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  input.click();
+}
+
+// Close file viewer modal when clicking outside
+window.addEventListener('click', (event) => {
+  const modal = document.getElementById('file-viewer-modal');
+  if (event.target === modal) {
+    closeFileViewer();
+  }
+});
+
+// ===== Skill Ranking System =====
+let currentEngineerRanking = {
+  engineerId: null,
+  skills: {},
+  rankings: {}
+};
+
+const SKILL_LEVELS = {
+  0: 'Not Yet',
+  1: 'Familiar',
+  2: 'Functional',
+  3: 'Expert'
+};
+
+function openSkillRanking(engineerId) {
+  const engineer = DataManager.getDeveloperById(engineerId);
+  if (!engineer) {
+    alert('Engineer not found');
+    return;
+  }
+
+  currentEngineerRanking = {
+    engineerId: engineerId,
+    skills: engineer.skills || [],
+    rankings: engineer.skillRankings || {}
+  };
+
+  const modal = document.getElementById('skill-ranking-modal');
+  const title = document.getElementById('skill-ranking-title');
+  const list = document.getElementById('skill-ranking-list');
+
+  title.textContent = `Engineer: ${engineer.name} - Rate Your Skills`;
+
+  // Build skill rating UI
+  let html = '';
+  currentEngineerRanking.skills.forEach(skill => {
+    const currentRating = currentEngineerRanking.rankings[skill] || 0;
+    html += `
+      <div class="skill-rating-item">
+        <div class="skill-name">${skill}</div>
+        <div class="skill-stars">
+          <button class="star-btn star-0 ${currentRating === 0 ? 'active' : ''}"
+                  onclick="setSkillRating('${skill}', 0)" title="Not Yet">☆</button>
+          <button class="star-btn star-1 ${currentRating === 1 ? 'active' : ''}"
+                  onclick="setSkillRating('${skill}', 1)" title="Familiar">★</button>
+          <button class="star-btn star-2 ${currentRating === 2 ? 'active' : ''}"
+                  onclick="setSkillRating('${skill}', 2)" title="Functional">★</button>
+          <button class="star-btn star-3 ${currentRating === 3 ? 'active' : ''}"
+                  onclick="setSkillRating('${skill}', 3)" title="Expert">★</button>
+        </div>
+        <div class="skill-level-text">${SKILL_LEVELS[currentRating]}</div>
+      </div>
+    `;
+  });
+
+  list.innerHTML = html;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function setSkillRating(skill, level) {
+  currentEngineerRanking.rankings[skill] = level;
+
+  // Update UI to reflect selection
+  const items = document.querySelectorAll('.skill-rating-item');
+  items.forEach(item => {
+    if (item.querySelector('.skill-name').textContent === skill) {
+      // Update stars
+      item.querySelectorAll('.star-btn').forEach((btn, idx) => {
+        if (idx <= level) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Update level text
+      item.querySelector('.skill-level-text').textContent = SKILL_LEVELS[level];
+    }
+  });
+}
+
+function saveSkillRankings() {
+  const engineer = DataManager.getDeveloperById(currentEngineerRanking.engineerId);
+  if (!engineer) {
+    alert('Engineer not found');
+    return;
+  }
+
+  // Update engineer with skill rankings
+  engineer.skillRankings = currentEngineerRanking.rankings;
+
+  // Save back to data
+  DataManager.updateDeveloper(engineer.id, { skillRankings: engineer.skillRankings });
+
+  alert(`Skill rankings saved for ${engineer.name}`);
+  closeSkillRanking();
+}
+
+function closeSkillRanking() {
+  const modal = document.getElementById('skill-ranking-modal');
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+  currentEngineerRanking = { engineerId: null, skills: {}, rankings: {} };
+}

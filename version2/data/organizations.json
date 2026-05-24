@@ -1,0 +1,74 @@
+{
+  "organizations": [
+    {
+      "id": 1,
+      "name": "City of Tucson",
+      "type": "Government",
+      "contact": "hr@tucsonaz.gov",
+      "description": "Municipal government for the City of Tucson",
+      "pathway": {
+        "status": "partner",
+        "joinDate": "2026-01-01",
+        "tier": "gold",
+        "projects": [1, 2, 5, 9],
+        "engineers": []
+      }
+    },
+    {
+      "id": 2,
+      "name": "Pima Community College",
+      "type": "Education",
+      "contact": "careers@pima.edu",
+      "description": "Community college serving Southern Arizona",
+      "pathway": {
+        "status": "partner",
+        "joinDate": "2026-01-01",
+        "tier": "gold",
+        "projects": [3, 4, 12],
+        "engineers": []
+      }
+    },
+    {
+      "id": 3,
+      "name": "Pima County",
+      "type": "Government",
+      "contact": "jobs@pima.gov",
+      "description": "Pima County government services",
+      "pathway": {
+        "status": "partner",
+        "joinDate": "2026-01-01",
+        "tier": "gold",
+        "projects": [6, 11],
+        "engineers": []
+      }
+    },
+    {
+      "id": 4,
+      "name": "Desert Healthcare Foundation",
+      "type": "Non-Profit",
+      "contact": "careers@dhf.org",
+      "description": "Healthcare-focused non-profit organization",
+      "pathway": {
+        "status": "partner",
+        "joinDate": "2026-01-01",
+        "tier": "silver",
+        "projects": [7, 10],
+        "engineers": []
+      }
+    },
+    {
+      "id": 5,
+      "name": "University of Arizona",
+      "type": "Education",
+      "contact": "careers@arizona.edu",
+      "description": "Major research university",
+      "pathway": {
+        "status": "partner",
+        "joinDate": "2026-01-01",
+        "tier": "silver",
+        "projects": [8],
+        "engineers": []
+      }
+    }
+  ]
+}

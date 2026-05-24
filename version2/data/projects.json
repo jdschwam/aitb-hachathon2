@@ -1,0 +1,429 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "organizationId": 1,
+      "name": "Budget Analytics Dashboard",
+      "type": "Data Analysis Platform",
+      "requiredSkills": ["Python", "Data Analysis", "Database Design"],
+      "positions": 2,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-02-01",
+        "endDate": "2026-05-01",
+        "assignedEngineers": [],
+        "impact": "Reduce administrative overhead and improve budget visibility",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 2,
+      "organizationId": 1,
+      "name": "Permit Processing Automation",
+      "type": "Process Automation",
+      "requiredSkills": ["Python", "API Development", "DevOps"],
+      "positions": 1,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-02-01",
+        "endDate": "2026-04-15",
+        "assignedEngineers": [],
+        "impact": "Streamline permit processing and reduce processing time",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 3,
+      "organizationId": 2,
+      "name": "Student Portal Redesign",
+      "type": "Customer Portal",
+      "requiredSkills": ["React", "Node.js", "Database Design", "UI/UX Design"],
+      "positions": 3,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-02-15",
+        "endDate": "2026-06-15",
+        "assignedEngineers": [],
+        "impact": "Modernize student experience and improve engagement",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 4,
+      "organizationId": 2,
+      "name": "Campus Directory Mobile App",
+      "type": "Mobile App",
+      "requiredSkills": ["Mobile Development", "JavaScript", "UI/UX Design"],
+      "positions": 2,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-03-01",
+        "endDate": "2026-06-01",
+        "assignedEngineers": [],
+        "impact": "Enable easy campus navigation and connection",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 5,
+      "organizationId": 1,
+      "name": "Service Request Workflow",
+      "type": "Workflow System",
+      "requiredSkills": ["JavaScript", "Node.js", "Business Analysis"],
+      "positions": 1,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-02-01",
+        "endDate": "2026-04-30",
+        "assignedEngineers": [],
+        "impact": "Improve service request tracking and response times",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 6,
+      "organizationId": 3,
+      "name": "Predictive Analytics Engine",
+      "type": "Machine Learning Pipeline",
+      "requiredSkills": ["Python", "Machine Learning", "Data Analysis", "Cloud Infrastructure"],
+      "positions": 2,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-03-01",
+        "endDate": "2026-07-01",
+        "assignedEngineers": [],
+        "impact": "Enable data-driven decision making across county operations",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 7,
+      "organizationId": 4,
+      "name": "Healthcare Integration Platform",
+      "type": "Microservices Architecture",
+      "requiredSkills": ["Java", "Docker", "Kubernetes", "DevOps", "API Development"],
+      "positions": 3,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-03-15",
+        "endDate": "2026-09-15",
+        "assignedEngineers": [],
+        "impact": "Integrate healthcare systems and improve interoperability",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 8,
+      "organizationId": 5,
+      "name": "University Analytics Dashboard",
+      "type": "Real-time Dashboard",
+      "requiredSkills": ["React", "JavaScript", "TypeScript", "API Development"],
+      "positions": 2,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-02-15",
+        "endDate": "2026-05-15",
+        "assignedEngineers": [],
+        "impact": "Provide real-time insights into university operations",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 9,
+      "organizationId": 1,
+      "name": "Infrastructure Security Audit",
+      "type": "Security Audit Platform",
+      "requiredSkills": ["Cybersecurity", "Python", "DevOps", "Cloud Infrastructure"],
+      "positions": 1,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-02-01",
+        "endDate": "2026-04-01",
+        "assignedEngineers": [],
+        "impact": "Strengthen security posture and identify vulnerabilities",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 10,
+      "organizationId": 4,
+      "name": "Patient Records System",
+      "type": "Healthcare Records System",
+      "requiredSkills": ["Database Design", "Java", "Cybersecurity", "System Design"],
+      "positions": 2,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-03-01",
+        "endDate": "2026-08-01",
+        "assignedEngineers": [],
+        "impact": "Modernize patient record management and compliance",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 11,
+      "organizationId": 3,
+      "name": "Tax Revenue Analytics",
+      "type": "Financial Analytics Tool",
+      "requiredSkills": ["Python", "Data Analysis", "SQL", "Testing"],
+      "positions": 1,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-02-15",
+        "endDate": "2026-05-15",
+        "assignedEngineers": [],
+        "impact": "Improve tax revenue forecasting and analysis",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 12,
+      "organizationId": 2,
+      "name": "Course Management Portal",
+      "type": "Web Content Management",
+      "requiredSkills": ["React", "Node.js", "UI/UX Design", "Database Design"],
+      "positions": 3,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-03-01",
+        "endDate": "2026-07-01",
+        "assignedEngineers": [],
+        "impact": "Streamline course management and instructor workflows",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 13,
+      "organizationId": 5,
+      "name": "Third-party API Integration",
+      "type": "API Integration Service",
+      "requiredSkills": ["Go", "API Development", "Database Design", "DevOps"],
+      "positions": 1,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-03-15",
+        "endDate": "2026-05-15",
+        "assignedEngineers": [],
+        "impact": "Connect with external services and platforms",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 14,
+      "organizationId": 4,
+      "name": "Health Tracking Mobile App",
+      "type": "Progressive Web App",
+      "requiredSkills": ["JavaScript", "React", "UI/UX Design", "Mobile Development"],
+      "positions": 2,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-03-01",
+        "endDate": "2026-06-30",
+        "assignedEngineers": [],
+        "impact": "Enable patients to track and manage their health",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 15,
+      "organizationId": 1,
+      "name": "Legacy System Cloud Migration",
+      "type": "Cloud Migration Project",
+      "requiredSkills": ["AWS", "Azure", "DevOps", "System Design"],
+      "positions": 2,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-04-01",
+        "endDate": "2026-08-01",
+        "assignedEngineers": [],
+        "impact": "Modernize infrastructure and reduce operational costs",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 16,
+      "organizationId": 3,
+      "name": "County Data Processing Pipeline",
+      "type": "Data Pipeline Platform",
+      "requiredSkills": ["Python", "SQL", "Data Analysis", "Apache Spark", "Cloud Infrastructure", "Terraform"],
+      "positions": 2,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-04-01",
+        "endDate": "2026-08-30",
+        "assignedEngineers": [],
+        "impact": "Process and analyze county data at scale",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 17,
+      "organizationId": 4,
+      "name": "Healthcare Caching Layer",
+      "type": "Distributed Cache System",
+      "requiredSkills": ["Go", "Redis", "System Design", "DevOps", "Docker", "Kubernetes"],
+      "positions": 1,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-03-15",
+        "endDate": "2026-06-15",
+        "assignedEngineers": [],
+        "impact": "Improve system performance and response times",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 18,
+      "organizationId": 5,
+      "name": "Student Marketplace Platform",
+      "type": "Full-Stack E-commerce",
+      "requiredSkills": ["React", "Node.js", "MongoDB", "TypeScript", "UI/UX Design", "Testing"],
+      "positions": 3,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-04-01",
+        "endDate": "2026-09-01",
+        "assignedEngineers": [],
+        "impact": "Create marketplace for students to buy and sell items",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 19,
+      "organizationId": 2,
+      "name": "College Notification System",
+      "type": "Real-time Messaging Platform",
+      "requiredSkills": ["WebSockets", "Node.js", "Redis", "MongoDB", "Docker", "DevOps"],
+      "positions": 2,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-03-15",
+        "endDate": "2026-07-15",
+        "assignedEngineers": [],
+        "impact": "Deliver real-time notifications to students and staff",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 20,
+      "organizationId": 4,
+      "name": "Medical Records Search",
+      "type": "Enterprise Search Solution",
+      "requiredSkills": ["Elasticsearch", "Java", "REST API", "System Design", "DevOps", "Testing"],
+      "positions": 1,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-04-01",
+        "endDate": "2026-07-01",
+        "assignedEngineers": [],
+        "impact": "Enable fast searching of medical records",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 21,
+      "organizationId": 5,
+      "name": "University Multi-Tenant Portal",
+      "type": "Multi-tenant SaaS Platform",
+      "requiredSkills": ["React", "Node.js", "PostgreSQL", "Kubernetes", "OAuth", "System Design", "Cybersecurity"],
+      "positions": 3,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-05-01",
+        "endDate": "2026-10-01",
+        "assignedEngineers": [],
+        "impact": "Build multi-tenant platform for university departments",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 22,
+      "organizationId": 1,
+      "name": "Infrastructure Automation",
+      "type": "Infrastructure as Code",
+      "requiredSkills": ["Terraform", "AWS", "DevOps", "Docker", "Jenkins", "Git", "System Design"],
+      "positions": 2,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-04-15",
+        "endDate": "2026-08-15",
+        "assignedEngineers": [],
+        "impact": "Automate infrastructure provisioning and management",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 23,
+      "organizationId": 3,
+      "name": "Real-time Government Analytics",
+      "type": "Real-time Analytics Engine",
+      "requiredSkills": ["Python", "Elasticsearch", "Machine Learning", "SQL", "Data Analysis", "Cloud Infrastructure"],
+      "positions": 2,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-04-15",
+        "endDate": "2026-09-15",
+        "assignedEngineers": [],
+        "impact": "Provide real-time analytics for government operations",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 24,
+      "organizationId": 4,
+      "name": "Blockchain Medical Records",
+      "type": "Blockchain Integration",
+      "requiredSkills": ["JavaScript", "TypeScript", "Go", "System Design", "Cryptography", "Testing"],
+      "positions": 1,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-05-01",
+        "endDate": "2026-08-01",
+        "assignedEngineers": [],
+        "impact": "Implement blockchain for secure medical records",
+        "outcomes": []
+      }
+    },
+    {
+      "id": 25,
+      "organizationId": 5,
+      "name": "AI-Powered Tutoring Engine",
+      "type": "AI Model Serving Platform",
+      "requiredSkills": ["Python", "Machine Learning", "Docker", "Kubernetes", "REST API", "DevOps", "System Design"],
+      "positions": 2,
+      "status": "Open",
+      "pathway": {
+        "stage": "recruitment",
+        "startDate": "2026-05-01",
+        "endDate": "2026-09-30",
+        "assignedEngineers": [],
+        "impact": "Provide AI-powered personalized tutoring",
+        "outcomes": []
+      }
+    }
+  ]
+}

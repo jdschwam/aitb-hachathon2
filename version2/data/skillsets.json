@@ -1,0 +1,60 @@
+{
+  "skillsets": [
+    {
+      "id": "skill-001",
+      "name": "Python",
+      "category": "programming",
+      "level": "intermediate",
+      "pathway": {
+        "provider": "Per Scholas",
+        "courseDuration": 40,
+        "certified": false,
+        "relatedSkills": ["Data Analysis", "Machine Learning"],
+        "jobsRequiring": [],
+        "demandLevel": "high"
+      }
+    },
+    {
+      "id": "skill-002",
+      "name": "JavaScript",
+      "category": "programming",
+      "level": "intermediate",
+      "pathway": {
+        "provider": "Per Scholas",
+        "courseDuration": 35,
+        "certified": false,
+        "relatedSkills": ["React", "Node.js"],
+        "jobsRequiring": [],
+        "demandLevel": "high"
+      }
+    },
+    {
+      "id": "skill-003",
+      "name": "Data Analysis",
+      "category": "data",
+      "level": "intermediate",
+      "pathway": {
+        "provider": "AI-Trailblazers",
+        "courseDuration": 30,
+        "certified": false,
+        "relatedSkills": ["Python", "SQL"],
+        "jobsRequiring": [],
+        "demandLevel": "high"
+      }
+    },
+    {
+      "id": "skill-004",
+      "name": "Project Management",
+      "category": "soft-skills",
+      "level": "beginner",
+      "pathway": {
+        "provider": "Vantage West",
+        "courseDuration": 20,
+        "certified": false,
+        "relatedSkills": ["Communication", "Leadership"],
+        "jobsRequiring": [],
+        "demandLevel": "medium"
+      }
+    }
+  ]
+}

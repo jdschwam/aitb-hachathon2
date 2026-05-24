@@ -13,10 +13,11 @@
         <div class="logo">🎯 Civic AI Talent Match</div>
         <ul class="nav-menu">
           <li><a href="#" class="nav-link" data-view="home">Home</a></li>
-          <li><a href="#" class="nav-link" data-view="developer-dashboard">Developers</a></li>
-          <li><a href="#" class="nav-link" data-view="employer-dashboard">Employers</a></li>
+          <li><a href="#" class="nav-link" onclick="openOverviewModal()">📋 Overview</a></li>
+          <li><a href="#" class="nav-link" data-view="developer-dashboard">Civic Engineers</a></li>
+          <li><a href="#" class="nav-link" data-view="employer-dashboard">Projects</a></li>
           <li><a href="#" class="nav-link" data-view="admin">Admin</a></li>
-          <li><a href="#" class="nav-link" data-view="about">ℹ️ About</a></li>
+          <li><a href="#" class="nav-link" onclick="openAboutModal()">ℹ️ About</a></li>
           <li><a href="#" class="nav-link" onclick="openWishlistModal()">🎯 Wishlist</a></li>
         </ul>
       </div>
@@ -28,14 +29,14 @@
         <div class="hero-content">
           <h1>Civic AI Talent Match</h1>
           <p>AI-Powered Opportunity Matching for Workforce Development</p>
-          <p class="tagline">Connect talented developers with meaningful opportunities in your community</p>
+          <p class="tagline">Connect talented Civic Engineers with meaningful opportunities in your community</p>
 
           <div class="hero-buttons">
             <button class="btn btn-primary" onclick="switchView('developer-dashboard')">
-              👨‍💻 I'm a Developer
+              👨‍💻 I'm a Civic Engineer
             </button>
             <button class="btn btn-secondary" onclick="switchView('employer-dashboard')">
-              🏢 I'm an Employer
+              🏢 View Projects
             </button>
             <button class="btn btn-outline" onclick="switchView('admin')">
               ⚙️ Admin Panel
@@ -47,12 +48,12 @@
       <div class="info-section">
         <div class="info-grid">
           <div class="info-card">
-            <h3>For Developers</h3>
+            <h3>For Civic Engineers</h3>
             <p>Find opportunities that match your skills and advance your career with meaningful work.</p>
           </div>
           <div class="info-card">
-            <h3>For Employers</h3>
-            <p>Discover talented developers aligned with your project needs and organizational goals.</p>
+            <h3>For Projects</h3>
+            <p>Discover talented Civic Engineers aligned with project needs and organizational goals.</p>
           </div>
           <div class="info-card">
             <h3>AI-Powered Matching</h3>
@@ -62,32 +63,46 @@
       </div>
     </section>
 
-    <!-- Developer Dashboard -->
+    <!-- Civic Engineer Dashboard -->
     <section id="developer-dashboard" class="view">
       <div class="container">
         <div class="header">
-          <h2>Developer Dashboard</h2>
+          <h2>Civic Engineer Dashboard</h2>
           <p>Find project opportunities that match your skills</p>
         </div>
 
         <div class="dashboard-controls">
-          <select id="developer-filter" class="filter-select">
-            <option value="">Select Your Profile...</option>
-          </select>
-          <button class="btn btn-primary" onclick="switchView('manage-developers')">➕ Add New Profile</button>
+          <button class="btn btn-primary" onclick="switchView('manage-developers')">➕ Add New Civic Engineer</button>
+          <button class="btn btn-secondary" onclick="switchView('view-engineers')">📋 View All Engineers</button>
         </div>
 
-        <div id="developer-matches" class="matches-container">
-          <p class="empty-state">Select your profile to see matching opportunities</p>
+        <div class="developer-dashboard-layout">
+          <!-- Left sidebar with engineer list -->
+          <div class="engineer-list-panel">
+            <h3>Civic Engineers</h3>
+            <div id="engineer-list" class="engineer-list">
+              <p class="empty-state">No engineers available</p>
+            </div>
+          </div>
+
+          <!-- Right panel with engineer details -->
+          <div class="engineer-details-panel">
+            <div id="engineer-details" class="engineer-card-container">
+              <p class="empty-state">Select an engineer to view details</p>
+            </div>
+            <div id="developer-matches" class="matches-container">
+              <!-- Project matches will be displayed here -->
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Employer Dashboard -->
+    <!-- Projects Dashboard -->
     <section id="employer-dashboard" class="view">
       <div class="container">
         <div class="header">
-          <h2>Employer Dashboard</h2>
+          <h2>Projects Dashboard</h2>
           <p>Find developers to match your project needs</p>
         </div>
 
@@ -104,16 +119,16 @@
       </div>
     </section>
 
-    <!-- Manage Developers -->
+    <!-- Manage Civic Engineers -->
     <section id="manage-developers" class="view">
       <div class="container">
         <div class="header">
-          <h2>Manage Developer Profiles</h2>
+          <h2>Manage Civic Engineer Profiles</h2>
           <button class="btn btn-secondary" onclick="switchView('developer-dashboard')">← Back</button>
         </div>
 
         <div class="form-section">
-          <h3>Add New Developer</h3>
+          <h3>Add New Civic Engineer</h3>
           <form id="developer-form" class="form">
             <div class="form-group">
               <label>Name *</label>
@@ -133,27 +148,36 @@
               </select>
             </div>
             <div class="form-group">
-              <label>Skills (select multiple) *</label>
-              <div class="checkbox-group" id="skills-group"></div>
+              <label>Skills (select proficiency level) *</label>
+              <div class="skills-rating-group" id="skills-rating-group"></div>
             </div>
             <button type="submit" class="btn btn-primary">Add Developer</button>
           </form>
         </div>
+      </div>
+    </section>
 
-        <div class="developers-list">
-          <h3>Current Developers</h3>
-          <div id="developers-table" class="table-container">
-            <p class="empty-state">No developers added yet</p>
+    <!-- View Engineers List -->
+    <section id="view-engineers" class="view">
+      <div class="container">
+        <div class="header">
+          <h2>Civic Engineers Directory</h2>
+          <button class="btn btn-secondary" onclick="switchView('developer-dashboard')">← Back</button>
+        </div>
+
+        <div class="engineers-directory">
+          <div id="engineers-table" class="table-container">
+            <p class="empty-state">No engineers available</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Manage Employers -->
+    <!-- Manage Projects -->
     <section id="manage-employers" class="view">
       <div class="container">
         <div class="header">
-          <h2>Manage Employer Projects</h2>
+          <h2>Manage Projects</h2>
           <button class="btn btn-secondary" onclick="switchView('employer-dashboard')">← Back</button>
         </div>
 
@@ -213,14 +237,14 @@
           <div class="admin-stats">
             <div class="stat-card">
               <span class="stat-number" id="total-developers">0</span>
-              <span class="stat-label">Developers</span>
+              <span class="stat-label">Civic Engineers</span>
             </div>
             <div class="stat-card">
               <span class="stat-number" id="total-projects">0</span>
               <span class="stat-label">Projects</span>
             </div>
             <div class="stat-card">
-              <span class="stat-number" id="total-employers">0</span>
+              <span class="stat-number" id="total-organizations">0</span>
               <span class="stat-label">Organizations</span>
             </div>
             <div class="stat-card">
@@ -231,17 +255,69 @@
         </div>
 
         <div class="admin-section">
-          <h3>Database Management</h3>
-          <div class="admin-buttons">
-            <button class="btn btn-secondary" onclick="exportData()">📥 Export Data</button>
-            <button class="btn btn-danger" onclick="resetData()">🔄 Reset to Sample Data</button>
-            <button class="btn btn-outline" onclick="clearAllData()">🗑️ Clear All Data</button>
+          <h3>Data Files</h3>
+          <div class="data-files-list">
+            <div class="data-file-row">
+              <div class="file-icon">📊</div>
+              <div class="file-info">
+                <div class="file-name">Civic Engineers</div>
+                <div class="file-path">data/civic-engineers.json</div>
+              </div>
+              <div class="file-actions">
+                <button type="button" class="icon-btn" onclick="loadDataFile('Civic Engineers', 'data/civic-engineers.json')" title="Load">📂</button>
+                <button type="button" class="icon-btn" onclick="viewDataFile('Civic Engineers', 'data/civic-engineers.json')" title="View">👁️</button>
+                <button type="button" class="icon-btn" onclick="editDataFile('Civic Engineers', 'data/civic-engineers.json')" title="Edit">✏️</button>
+              </div>
+            </div>
+            <div class="data-file-row">
+              <div class="file-icon">🏢</div>
+              <div class="file-info">
+                <div class="file-name">Organizations</div>
+                <div class="file-path">data/organizations.json</div>
+              </div>
+              <div class="file-actions">
+                <button class="icon-btn" onclick="loadDataFile('Organizations', 'data/organizations.json')" title="Load">📂</button>
+                <button class="icon-btn" onclick="viewDataFile('Organizations', 'data/organizations.json')" title="View">👁️</button>
+                <button class="icon-btn" onclick="editDataFile('Organizations', 'data/organizations.json')" title="Edit">✏️</button>
+              </div>
+            </div>
+            <div class="data-file-row">
+              <div class="file-icon">📋</div>
+              <div class="file-info">
+                <div class="file-name">Projects</div>
+                <div class="file-path">data/projects.json</div>
+              </div>
+              <div class="file-actions">
+                <button class="icon-btn" onclick="loadDataFile('Projects', 'data/projects.json')" title="Load">📂</button>
+                <button class="icon-btn" onclick="viewDataFile('Projects', 'data/projects.json')" title="View">👁️</button>
+                <button class="icon-btn" onclick="editDataFile('Projects', 'data/projects.json')" title="Edit">✏️</button>
+              </div>
+            </div>
+            <div class="data-file-row">
+              <div class="file-icon">📑</div>
+              <div class="file-info">
+                <div class="file-name">Overview</div>
+                <div class="file-path">data/overview-content.json</div>
+              </div>
+              <div class="file-actions">
+                <button class="icon-btn" onclick="loadDataFile('Overview', 'data/overview-content.json')" title="Load">📂</button>
+                <button class="icon-btn" onclick="viewDataFile('Overview', 'data/overview-content.json')" title="View">👁️</button>
+                <button class="icon-btn" onclick="editDataFile('Overview', 'data/overview-content.json')" title="Edit">✏️</button>
+              </div>
+            </div>
+            <div class="data-file-row">
+              <div class="file-icon">🎯</div>
+              <div class="file-info">
+                <div class="file-name">Wishlist</div>
+                <div class="file-path">data/wishlist-content.json</div>
+              </div>
+              <div class="file-actions">
+                <button class="icon-btn" onclick="loadDataFile('Wishlist', 'data/wishlist-content.json')" title="Load">📂</button>
+                <button class="icon-btn" onclick="viewDataFile('Wishlist', 'data/wishlist-content.json')" title="View">👁️</button>
+                <button class="icon-btn" onclick="editDataFile('Wishlist', 'data/wishlist-content.json')" title="Edit">✏️</button>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="admin-section">
-          <h3>Raw Data (JSON)</h3>
-          <textarea id="data-export" class="data-textarea" readonly></textarea>
         </div>
       </div>
     </section>
@@ -266,67 +342,129 @@
       </div>
     </div>
 
-    <!-- About Page -->
-    <section id="about" class="view">
-      <div class="about-container">
-        <dialog id="about-dialog" class="about-dialog" open>
-          <div class="dialog-content">
-            <h1 class="about-title">🎯 AI Trailblazers Hackathon 3</h1>
+    <!-- Overview Modal -->
+    <div id="overview-modal" class="wishlist-modal">
+      <div class="wishlist-dialog">
+        <div class="wishlist-header">
+          <h2>📋 Client Overview</h2>
+          <button type="button" class="wishlist-close" onclick="closeOverviewModal()">&times;</button>
+        </div>
+        <div class="wishlist-container">
+          <div class="wishlist-slides" id="overview-slides">
+            <!-- Slides will be inserted here -->
+          </div>
+          <div class="wishlist-controls">
+            <button type="button" class="wishlist-btn-nav" onclick="previousOverviewSlide()">← Back</button>
+            <div class="wishlist-indicators" id="overview-indicators"></div>
+            <button type="button" class="wishlist-btn-nav" onclick="nextOverviewSlide()">Forward →</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <div class="developers-section">
-              <div class="developer-names">
-                <span class="dev-label">Hacked together by</span>
-                <div class="dev-badges">
-                  <span class="dev-badge">✨ Raffa</span>
-                  <span class="dev-badge">✨ Dan</span>
-                </div>
+    <!-- Skill Ranking Modal -->
+    <div id="skill-ranking-modal" class="wishlist-modal">
+      <div class="wishlist-dialog">
+        <div class="wishlist-header">
+          <h2 id="skill-ranking-title">Engineer: Rate Your Skills</h2>
+          <button type="button" class="wishlist-close" onclick="closeSkillRanking()">&times;</button>
+        </div>
+        <div class="wishlist-container">
+          <div id="skill-ranking-list" class="skill-ranking-list"></div>
+        </div>
+        <div class="file-viewer-actions">
+          <button class="btn btn-secondary" onclick="saveSkillRankings()">💾 Save Rankings</button>
+          <button class="btn btn-outline" onclick="closeSkillRanking()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- File Viewer Modal -->
+    <div id="file-viewer-modal" class="wishlist-modal">
+      <div class="wishlist-dialog">
+        <div class="wishlist-header">
+          <h2 id="file-viewer-title">File Contents</h2>
+          <button type="button" class="wishlist-close" onclick="closeFileViewer()">&times;</button>
+        </div>
+        <div class="wishlist-container">
+          <textarea id="file-viewer-content" class="data-textarea" style="border: none; padding: 2rem; font-family: monospace; font-size: 0.9rem; color: #333;"></textarea>
+        </div>
+        <div class="file-viewer-actions">
+          <div id="view-mode-actions" class="file-viewer-actions">
+            <button class="btn btn-outline" onclick="closeFileViewer()">Close</button>
+          </div>
+          <div id="edit-mode-actions" class="file-viewer-actions" style="display: none;">
+            <button class="btn btn-secondary" onclick="downloadFile()">📥 Download</button>
+            <button class="btn btn-secondary" onclick="uploadFile()">📤 Upload</button>
+            <button class="btn btn-outline" onclick="cancelEditMode()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="about-modal" class="wishlist-modal">
+      <div class="wishlist-dialog">
+        <div class="wishlist-header">
+          <h2>ℹ️ About</h2>
+          <button type="button" class="wishlist-close" onclick="closeAboutModal()">&times;</button>
+        </div>
+        <div class="about-scrollable">
+          <h1 class="about-title">🎯 AI Trailblazers Hackathon 3</h1>
+
+          <div class="developers-section">
+            <div class="developer-names">
+              <span class="dev-label">Hacked together by</span>
+              <div class="dev-badges">
+                <span class="dev-badge">✨ Raffa</span>
+                <span class="dev-badge">✨ Dan</span>
               </div>
             </div>
-
-            <div class="version-info">
-              <h3>Application: Civic AI Talent Match - Version 2</h3>
-              <p><strong>Build Date:</strong> <span id="version-date"></span></p>
-              <p><strong>Version Number:</strong> <span id="version-number"></span></p>
-            </div>
-
-            <div class="about-section">
-              <h3>Technology Stack</h3>
-              <ul class="tech-list">
-                <li>JavaScript (ES6+)</li>
-                <li>HTML5</li>
-                <li>CSS3</li>
-              </ul>
-            </div>
-
-            <div class="about-section ai-features-section">
-              <h3>🤖 AI-Powered Capabilities</h3>
-              <ul class="ai-features-list">
-                <li><strong>Intelligent Matching Engine</strong> - AI algorithm analyzes skills and experience to match developers with optimal projects</li>
-                <li><strong>Smart Skill Analysis</strong> - Evaluates skill relevance, experience level, and project requirements</li>
-                <li><strong>Experience-Level Matching</strong> - Considers developer seniority to recommend appropriately challenging projects</li>
-                <li><strong>Skill Gap Identification</strong> - Identifies training opportunities by analyzing skill gaps</li>
-              </ul>
-            </div>
-
-            <div class="about-section">
-              <h3>Features</h3>
-              <ul class="features-list">
-                <li>AI-Powered Matching Algorithm</li>
-                <li>Developer Profile Management</li>
-                <li>Employer Project Management</li>
-                <li>Skill-Based Matching</li>
-                <li>Local Data Persistence (localStorage)</li>
-                <li>Admin Dashboard</li>
-                <li>Responsive Web Design</li>
-                <li>Zero Dependencies</li>
-              </ul>
-            </div>
-
-            <p class="about-footer">Built for the Civic AI Corps - Connecting talent with opportunity in Southern Arizona</p>
           </div>
-        </dialog>
+
+          <div class="version-info">
+            <h3>Application: Civic AI Talent Match - Version 2</h3>
+            <p><strong>Build Date:</strong> <span id="version-date"></span></p>
+            <p><strong>Version Number:</strong> <span id="version-number"></span></p>
+          </div>
+
+          <div class="about-section">
+            <h3>Technology Stack</h3>
+            <ul class="tech-list">
+              <li>JavaScript (ES6+)</li>
+              <li>HTML5</li>
+              <li>CSS3</li>
+            </ul>
+          </div>
+
+          <div class="about-section">
+            <h3>🤖 AI-Powered Capabilities</h3>
+            <ul class="ai-features-list">
+              <li><strong>Intelligent Matching Engine</strong> - AI algorithm analyzes skills and experience to match civic engineers with optimal projects</li>
+              <li><strong>Smart Skill Analysis</strong> - Evaluates skill relevance, experience level, and project requirements</li>
+              <li><strong>Experience-Level Matching</strong> - Considers civic engineer seniority to recommend appropriately challenging projects</li>
+              <li><strong>Skill Gap Identification</strong> - Identifies training opportunities by analyzing skill gaps</li>
+            </ul>
+          </div>
+
+          <div class="about-section">
+            <h3>Features</h3>
+            <ul class="features-list">
+              <li>AI-Powered Matching Algorithm</li>
+              <li>Civic Engineer Profile Management</li>
+              <li>Project Management</li>
+              <li>Skill-Based Matching</li>
+              <li>Local Data Persistence (localStorage)</li>
+              <li>Admin Dashboard</li>
+              <li>Responsive Web Design</li>
+              <li>Zero Dependencies</li>
+            </ul>
+          </div>
+
+          <p class="about-footer">Built for the Civic AI Corps - Connecting talent with opportunity in Southern Arizona</p>
+        </div>
       </div>
-    </section>
+    </div>
   </div>
 
   <script src="data.js"></script>

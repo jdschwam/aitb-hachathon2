@@ -157,11 +157,11 @@ class MatchingEngine {
     let recommendation = '';
 
     if (confidence === 'Excellent') {
-      recommendation = `Excellent match! This developer has all required skills and ${matchedCount} matching requirements.`;
+      recommendation = `Excellent match! This Civic Engineer has all required skills and ${matchedCount} matching requirements.`;
     } else if (confidence === 'Good') {
-      recommendation = `Good match! This developer has ${matchedCount}/${requiredCount} required skills. Missing: ${missingSkills.join(', ')}`;
+      recommendation = `Good match! This Civic Engineer has ${matchedCount}/${requiredCount} required skills. Missing: ${missingSkills.join(', ')}`;
     } else if (confidence === 'Fair') {
-      recommendation = `Fair match. This developer has ${matchedCount}/${requiredCount} required skills and could grow into the role.`;
+      recommendation = `Fair match. This Civic Engineer has ${matchedCount}/${requiredCount} required skills and could grow into the role.`;
     } else {
       recommendation = `Limited match. Consider other candidates or provide training for: ${missingSkills.join(', ')}`;
     }

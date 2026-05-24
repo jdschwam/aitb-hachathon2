@@ -1,0 +1,135 @@
+{
+  "wishlist": [
+    {
+      "id": 1,
+      "title": "🏢 Expanded Civic Organizations",
+      "content": [
+        "Add more nonprofit organizations including:",
+        "Social services agencies and food banks",
+        "Environmental conservation groups",
+        "Education and literacy programs",
+        "Healthcare and wellness nonprofits",
+        "Community development organizations",
+        "Arts and cultural institutions"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "👤 Enhanced Developer Profiles",
+      "content": [
+        "Expand developer information to include:",
+        "Personal background and professional history",
+        "Years of experience in the working world",
+        "Career aspirations (technical, management, construction, health, etc.)",
+        "Preferred industries and work environments",
+        "Learning goals and skill development paths",
+        "Community engagement and volunteer interests"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "🤖 AI-Powered Aspirations Matching",
+      "content": [
+        "Leverage AI to improve matching by considering:",
+        "Career trajectory alignment with project types",
+        "Long-term growth opportunities for developers",
+        "Organizational culture fit assessment",
+        "Skill gap identification for career advancement",
+        "Mentorship and leadership opportunities",
+        "Remote work and schedule flexibility matching"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "📋 Expanded Project Definitions",
+      "content": [
+        "Enhance project information with:",
+        "Detailed project timelines and duration",
+        "Impact metrics and success criteria",
+        "Team composition and collaboration needs",
+        "Budget and compensation information",
+        "Training and support available",
+        "Career growth opportunities within projects",
+        "Remote/hybrid work options"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "🎓 Skills Development Pathways",
+      "content": [
+        "Create structured learning paths:",
+        "Track skill progression over time",
+        "Recommend training resources",
+        "Connect developers with mentors",
+        "Gamify skill achievements with badges",
+        "Partner with educational institutions",
+        "Provide certification support"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "📊 Advanced Analytics & Reporting",
+      "content": [
+        "Implement comprehensive analytics:",
+        "Career outcome tracking for participants",
+        "Project success and impact metrics",
+        "Organization ROI calculations",
+        "Skills demand forecasting",
+        "Diversity and inclusion metrics",
+        "Community economic impact reporting"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "🤝 Team Assembly Intelligence",
+      "content": [
+        "AI-powered team building:",
+        "Recommend ideal team compositions",
+        "Balance technical and soft skills",
+        "Consider team dynamics and personalities",
+        "Optimize for knowledge transfer",
+        "Predict team collaboration success",
+        "Create diverse and inclusive teams"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "💼 Organizational Insights",
+      "content": [
+        "Provide value to partner organizations:",
+        "Workforce planning tools",
+        "Talent pipeline development",
+        "Skills inventory management",
+        "Succession planning assistance",
+        "Market competitiveness analysis",
+        "Industry benchmark comparisons"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "🌐 Mobile & Integration",
+      "content": [
+        "Expand platform accessibility:",
+        "Native mobile applications (iOS & Android)",
+        "API integrations with HR systems",
+        "Calendar and scheduling integration",
+        "Email and notification systems",
+        "Document storage and sharing",
+        "Real-time collaboration tools"
+      ]
+    },
+    {
+      "id": 10,
+      "title": "🎯 Impact & Sustainability",
+      "content": [
+        "Drive long-term community impact:",
+        "Track economic mobility outcomes",
+        "Support social equity initiatives",
+        "Build sustainable partnerships",
+        "Create funding mechanisms",
+        "Scale to additional regions",
+        "Measure and report on SDG alignment"
+      ]
+    }
+  ]
+}

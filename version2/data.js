@@ -219,7 +219,8 @@ const SAMPLE_DATA = {
       name: 'Alex Johnson',
       email: 'alex.johnson@email.com',
       level: 'Senior',
-      skills: ['Python', 'Data Analysis', 'Machine Learning', 'Database Design'],
+      skills: ['Python', 'Data Analysis', 'Machine Learning', 'Database Design', 'SQL', 'Cloud Infrastructure', 'API Development'],
+      skillRankings: { 'Python': 3, 'Data Analysis': 3, 'Machine Learning': 2, 'Database Design': 2, 'SQL': 3, 'Cloud Infrastructure': 1, 'API Development': 0 },
       createdAt: new Date().toISOString()
     },
     {
@@ -227,7 +228,8 @@ const SAMPLE_DATA = {
       name: 'Maria Garcia',
       email: 'maria.garcia@email.com',
       level: 'Mid',
-      skills: ['React', 'JavaScript', 'UI/UX Design', 'Node.js'],
+      skills: ['React', 'JavaScript', 'UI/UX Design', 'Node.js', 'TypeScript', 'Testing', 'CSS'],
+      skillRankings: { 'React': 2, 'JavaScript': 2, 'UI/UX Design': 2, 'Node.js': 1, 'TypeScript': 1, 'Testing': 0, 'CSS': 3 },
       createdAt: new Date().toISOString()
     },
     {
@@ -235,7 +237,8 @@ const SAMPLE_DATA = {
       name: 'James Chen',
       email: 'james.chen@email.com',
       level: 'Senior',
-      skills: ['Node.js', 'DevOps', 'Cloud Infrastructure', 'Cybersecurity'],
+      skills: ['Node.js', 'DevOps', 'Cloud Infrastructure', 'Cybersecurity', 'Docker', 'Kubernetes', 'System Design', 'Java'],
+      skillRankings: { 'Node.js': 3, 'DevOps': 3, 'Cloud Infrastructure': 2, 'Cybersecurity': 2, 'Docker': 3, 'Kubernetes': 2, 'System Design': 1, 'Java': 0 },
       createdAt: new Date().toISOString()
     },
     {
@@ -243,7 +246,8 @@ const SAMPLE_DATA = {
       name: 'Sarah Williams',
       email: 'sarah.williams@email.com',
       level: 'Junior',
-      skills: ['JavaScript', 'React', 'UI/UX Design'],
+      skills: ['JavaScript', 'React', 'UI/UX Design', 'HTML', 'CSS', 'Git'],
+      skillRankings: { 'JavaScript': 1, 'React': 1, 'UI/UX Design': 1, 'HTML': 2, 'CSS': 1, 'Git': 0 },
       createdAt: new Date().toISOString()
     },
     {
@@ -251,7 +255,8 @@ const SAMPLE_DATA = {
       name: 'Michael Rodriguez',
       email: 'michael.r@email.com',
       level: 'Mid',
-      skills: ['Python', 'API Development', 'Database Design', 'DevOps'],
+      skills: ['Python', 'API Development', 'Database Design', 'DevOps', 'Docker', 'Testing', 'Git'],
+      skillRankings: { 'Python': 2, 'API Development': 2, 'Database Design': 2, 'DevOps': 1, 'Docker': 1, 'Testing': 0, 'Git': 3 },
       createdAt: new Date().toISOString()
     },
     {
@@ -259,7 +264,8 @@ const SAMPLE_DATA = {
       name: 'Lisa Zhang',
       email: 'lisa.zhang@email.com',
       level: 'Senior',
-      skills: ['Machine Learning', 'Python', 'Data Analysis', 'Cloud Infrastructure'],
+      skills: ['Machine Learning', 'Python', 'Data Analysis', 'Cloud Infrastructure', 'TensorFlow', 'Statistical Analysis', 'SQL'],
+      skillRankings: { 'Machine Learning': 3, 'Python': 3, 'Data Analysis': 3, 'Cloud Infrastructure': 2, 'TensorFlow': 2, 'Statistical Analysis': 3, 'SQL': 1 },
       createdAt: new Date().toISOString()
     },
     {
@@ -267,7 +273,8 @@ const SAMPLE_DATA = {
       name: 'David Brown',
       email: 'david.brown@email.com',
       level: 'Mid',
-      skills: ['Mobile Development', 'JavaScript', 'React', 'UI/UX Design'],
+      skills: ['Mobile Development', 'JavaScript', 'React', 'UI/UX Design', 'React Native', 'iOS', 'Android'],
+      skillRankings: { 'Mobile Development': 2, 'JavaScript': 2, 'React': 2, 'UI/UX Design': 2, 'React Native': 1, 'iOS': 0, 'Android': 1 },
       createdAt: new Date().toISOString()
     },
     {
@@ -275,7 +282,8 @@ const SAMPLE_DATA = {
       name: 'Jessica Lee',
       email: 'jessica.lee@email.com',
       level: 'Junior',
-      skills: ['Python', 'Business Analysis', 'Project Management'],
+      skills: ['Python', 'Business Analysis', 'Project Management', 'Excel', 'SQL', 'Documentation'],
+      skillRankings: { 'Python': 1, 'Business Analysis': 1, 'Project Management': 0, 'Excel': 2, 'SQL': 0, 'Documentation': 1 },
       createdAt: new Date().toISOString()
     },
     {
@@ -283,7 +291,8 @@ const SAMPLE_DATA = {
       name: 'Robert Martinez',
       email: 'robert.m@email.com',
       level: 'Senior',
-      skills: ['Node.js', 'API Development', 'Database Design', 'Cybersecurity'],
+      skills: ['Node.js', 'API Development', 'Database Design', 'Cybersecurity', 'MongoDB', 'REST APIs', 'Testing', 'System Design'],
+      skillRankings: { 'Node.js': 3, 'API Development': 3, 'Database Design': 2, 'Cybersecurity': 3, 'MongoDB': 2, 'REST APIs': 3, 'Testing': 1, 'System Design': 2 },
       createdAt: new Date().toISOString()
     },
     {
@@ -291,7 +300,8 @@ const SAMPLE_DATA = {
       name: 'Emily White',
       email: 'emily.white@email.com',
       level: 'Mid',
-      skills: ['React', 'JavaScript', 'Node.js', 'Database Design', 'DevOps'],
+      skills: ['React', 'JavaScript', 'Node.js', 'Database Design', 'DevOps', 'AWS', 'Testing'],
+      skillRankings: { 'React': 2, 'JavaScript': 2, 'Node.js': 2, 'Database Design': 1, 'DevOps': 1, 'AWS': 0, 'Testing': 2 },
       createdAt: new Date().toISOString()
     },
     {
@@ -299,7 +309,8 @@ const SAMPLE_DATA = {
       name: 'Kevin Park',
       email: 'kevin.park@email.com',
       level: 'Senior',
-      skills: ['Java', 'Microservices', 'Docker', 'Kubernetes', 'System Design'],
+      skills: ['Java', 'Microservices', 'Docker', 'Kubernetes', 'System Design', 'Spring Boot', 'Database Design'],
+      skillRankings: { 'Java': 3, 'Microservices': 3, 'Docker': 3, 'Kubernetes': 2, 'System Design': 2, 'Spring Boot': 3, 'Database Design': 1 },
       createdAt: new Date().toISOString()
     },
     {
@@ -307,7 +318,8 @@ const SAMPLE_DATA = {
       name: 'Sophia Patel',
       email: 'sophia.patel@email.com',
       level: 'Mid',
-      skills: ['Python', 'Machine Learning', 'Data Analysis', 'SQL', 'Cloud Infrastructure'],
+      skills: ['Python', 'Machine Learning', 'Data Analysis', 'SQL', 'Cloud Infrastructure', 'Pandas', 'Scikit-learn'],
+      skillRankings: { 'Python': 2, 'Machine Learning': 2, 'Data Analysis': 2, 'SQL': 1, 'Cloud Infrastructure': 1, 'Pandas': 2, 'Scikit-learn': 0 },
       createdAt: new Date().toISOString()
     },
     {
@@ -315,7 +327,8 @@ const SAMPLE_DATA = {
       name: 'Marcus Johnson',
       email: 'marcus.j@email.com',
       level: 'Junior',
-      skills: ['JavaScript', 'React', 'TypeScript', 'Testing', 'UI/UX Design'],
+      skills: ['JavaScript', 'React', 'TypeScript', 'Testing', 'UI/UX Design', 'CSS', 'HTML'],
+      skillRankings: { 'JavaScript': 1, 'React': 1, 'TypeScript': 0, 'Testing': 0, 'UI/UX Design': 1, 'CSS': 2, 'HTML': 1 },
       createdAt: new Date().toISOString()
     },
     {
@@ -323,7 +336,8 @@ const SAMPLE_DATA = {
       name: 'Angela Torres',
       email: 'angela.torres@email.com',
       level: 'Senior',
-      skills: ['AWS', 'Azure', 'DevOps', 'Kubernetes', 'Cloud Infrastructure', 'Cybersecurity'],
+      skills: ['AWS', 'Azure', 'DevOps', 'Kubernetes', 'Cloud Infrastructure', 'Terraform', 'Jenkins', 'Security'],
+      skillRankings: { 'AWS': 3, 'Azure': 3, 'DevOps': 3, 'Kubernetes': 2, 'Cloud Infrastructure': 2, 'Terraform': 2, 'Jenkins': 1, 'Security': 3 },
       createdAt: new Date().toISOString()
     },
     {
@@ -331,7 +345,8 @@ const SAMPLE_DATA = {
       name: 'Nathan Reeves',
       email: 'nathan.reeves@email.com',
       level: 'Mid',
-      skills: ['Go', 'API Development', 'Docker', 'DevOps', 'System Design'],
+      skills: ['Go', 'API Development', 'Docker', 'DevOps', 'System Design', 'gRPC', 'Protocol Buffers'],
+      skillRankings: { 'Go': 2, 'API Development': 2, 'Docker': 2, 'DevOps': 2, 'System Design': 1, 'gRPC': 1, 'Protocol Buffers': 0 },
       createdAt: new Date().toISOString()
     },
     {
@@ -339,7 +354,8 @@ const SAMPLE_DATA = {
       name: 'Isabella Cruz',
       email: 'isabella.cruz@email.com',
       level: 'Senior',
-      skills: ['JavaScript', 'React', 'Vue.js', 'UI/UX Design', 'Agile', 'Project Management'],
+      skills: ['JavaScript', 'React', 'Vue.js', 'UI/UX Design', 'Agile', 'Project Management', 'Product Strategy'],
+      skillRankings: { 'JavaScript': 3, 'React': 3, 'Vue.js': 2, 'UI/UX Design': 2, 'Agile': 3, 'Project Management': 3, 'Product Strategy': 1 },
       createdAt: new Date().toISOString()
     },
     {
@@ -347,7 +363,8 @@ const SAMPLE_DATA = {
       name: 'Oliver Thompson',
       email: 'oliver.thompson@email.com',
       level: 'Junior',
-      skills: ['Python', 'Data Analysis', 'SQL', 'Business Analysis', 'Testing'],
+      skills: ['Python', 'Data Analysis', 'SQL', 'Business Analysis', 'Testing', 'Tableau'],
+      skillRankings: { 'Python': 1, 'Data Analysis': 1, 'SQL': 1, 'Business Analysis': 0, 'Testing': 0, 'Tableau': 1 },
       createdAt: new Date().toISOString()
     },
     {
@@ -355,7 +372,8 @@ const SAMPLE_DATA = {
       name: 'Rachel Green',
       email: 'rachel.green@email.com',
       level: 'Senior',
-      skills: ['Cybersecurity', 'Java', 'Python', 'DevOps', 'System Design', 'Cloud Infrastructure'],
+      skills: ['Cybersecurity', 'Java', 'Python', 'DevOps', 'System Design', 'Network Security', 'Penetration Testing', 'Compliance'],
+      skillRankings: { 'Cybersecurity': 3, 'Java': 3, 'Python': 2, 'DevOps': 3, 'System Design': 2, 'Network Security': 3, 'Penetration Testing': 2, 'Compliance': 1 },
       createdAt: new Date().toISOString()
     },
     {
@@ -363,7 +381,8 @@ const SAMPLE_DATA = {
       name: 'Daniel Kim',
       email: 'daniel.kim@email.com',
       level: 'Mid',
-      skills: ['Mobile Development', 'JavaScript', 'React', 'TypeScript', 'UI/UX Design'],
+      skills: ['Mobile Development', 'JavaScript', 'React', 'TypeScript', 'UI/UX Design', 'Flutter', 'Firebase'],
+      skillRankings: { 'Mobile Development': 2, 'JavaScript': 2, 'React': 2, 'TypeScript': 2, 'UI/UX Design': 2, 'Flutter': 1, 'Firebase': 0 },
       createdAt: new Date().toISOString()
     },
     {
@@ -371,7 +390,8 @@ const SAMPLE_DATA = {
       name: 'Victoria Santos',
       email: 'victoria.santos@email.com',
       level: 'Mid',
-      skills: ['Node.js', 'JavaScript', 'GraphQL', 'API Development', 'Database Design', 'Testing'],
+      skills: ['Node.js', 'JavaScript', 'GraphQL', 'API Development', 'Database Design', 'Testing', 'MongoDB'],
+      skillRankings: { 'Node.js': 2, 'JavaScript': 2, 'GraphQL': 2, 'API Development': 2, 'Database Design': 1, 'Testing': 1, 'MongoDB': 0 },
       createdAt: new Date().toISOString()
     }
   ],

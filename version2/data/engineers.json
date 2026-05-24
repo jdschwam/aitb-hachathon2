@@ -1,0 +1,20 @@
+{
+  "engineers": [
+    {
+      "id": "eng-001",
+      "name": "Sample Engineer",
+      "email": "sample@example.com",
+      "level": "Junior",
+      "skills": ["Python", "JavaScript"],
+      "pathway": {
+        "stage": "foundation",
+        "provider": "Per Scholas",
+        "status": "active",
+        "startDate": "2026-01-15",
+        "expectedCompletion": "2026-06-15",
+        "mentors": [],
+        "projects": []
+      }
+    }
+  ]
+}
