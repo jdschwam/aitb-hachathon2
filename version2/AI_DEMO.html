@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude AI Features Demo - Civic AI Talent Match</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .demo-section {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .demo-button {
+      margin: 0.5rem 0;
+      width: 100%;
+    }
+
+    .code-block {
+      background: #f5f5f5;
+      padding: 1rem;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .status.ready {
+      background: #c6f6d5;
+      color: #22543d;
+    }
+
+    .status.error {
+      background: #fed7d7;
+      color: #742a2a;
+    }
+
+    .status.pending {
+      background: #feebc8;
+      color: #7c2d12;
+    }
+
+    .output-box {
+      background: #f0f0f0;
+      padding: 1.5rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+      min-height: 100px;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .loading {
+      display: inline-block;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">🤖 Claude AI Features Demo</div>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">← Back to Main App</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container" style="padding-top: 2rem;">
+      <h1>Claude AI Capabilities Demo</h1>
+      <p>Explore AI-powered features for Civic AI Talent Match</p>
+
+      <!-- API Key Setup -->
+      <div class="demo-section">
+        <h2>🔑 Step 1: Set Up Your Claude API Key</h2>
+        <p>Get a free API key from <strong><a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a></strong></p>
+
+        <div id="api-status" class="status pending">⏳ Not configured</div>
+
+        <div style="margin: 1rem 0;">
+          <input type="password" id="api-key-input" placeholder="Paste your Claude API key here..."
+            style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 0.5rem;">
+          <button class="btn btn-primary" onclick="setApiKey()">Save API Key</button>
+          <button class="btn btn-outline" onclick="clearApiKey()">Clear Key</button>
+        </div>
+
+        <p style="color: #666; font-size: 0.9rem;">
+          ✓ Your key is stored only in this browser
+          <br>✓ Never shared or logged
+          <br>✓ You can clear it anytime
+        </p>
+      </div>
+
+      <!-- Feature 1: Match Explanations -->
+      <div class="demo-section">
+        <h2>1️⃣ Smart Match Explanations</h2>
+        <p>Get AI-powered explanations of why a developer is a good fit for a project.</p>
+
+        <button class="btn btn-primary demo-button" onclick="demoMatchExplanation()">
+          Demo: Explain Sara's match for Budget Analytics
+        </button>
+
+        <div id="output-match-explanation" class="output-box" style="display: none;">
+          <div id="output-match-explanation-text"></div>
+        </div>
+      </div>
+
+      <!-- Feature 2: Career Insights -->
+      <div class="demo-section">
+        <h2>2️⃣ Career Development Paths</h2>
+        <p>Generate personalized career development plans for developers.</p>
+
+        <button class="btn btn-primary demo-button" onclick="demoCareerPath()">
+          Demo: Career path for Sarah Williams
+        </button>
+
+        <div id="output-career-path" class="output-box" style="display: none;">
+          <div id="output-career-path-text"></div>
+        </div>
+      </div>
+
+      <!-- Feature 3: Skill Gap Analysis -->
+      <div class="demo-section">
+        <h2>3️⃣ Skill Gap Analysis</h2>
+        <p>Identify missing skills and recommend training resources.</p>
+
+        <button class="btn btn-primary demo-button" onclick="demoSkillGaps()">
+          Demo: Skills gap for James Chen on Student Portal project
+        </button>
+
+        <div id="output-skill-gaps" class="output-box" style="display: none;">
+          <div id="output-skill-gaps-text"></div>
+        </div>
+      </div>
+
+      <!-- Feature 4: Hiring Insights -->
+      <div class="demo-section">
+        <h2>4️⃣ Hiring Recommendations</h2>
+        <p>Strategic recommendations on which developers to hire for a project.</p>
+
+        <button class="btn btn-primary demo-button" onclick="demoHiringInsights()">
+          Demo: Hiring recommendations for Budget Analytics Dashboard
+        </button>
+
+        <div id="output-hiring-insights" class="output-box" style="display: none;">
+          <div id="output-hiring-insights-text"></div>
+        </div>
+      </div>
+
+      <!-- Feature 5: Success Prediction -->
+      <div class="demo-section">
+        <h2>5️⃣ Success Probability</h2>
+        <p>Predict the likelihood of success for a developer-project match.</p>
+
+        <button class="btn btn-primary demo-button" onclick="demoSuccessPrediction()">
+          Demo: Success probability for Emily White on Student Portal
+        </button>
+
+        <div id="output-success-prediction" class="output-box" style="display: none;">
+          <div id="output-success-prediction-text"></div>
+        </div>
+      </div>
+
+      <!-- Feature 6: Workforce Analysis -->
+      <div class="demo-section">
+        <h2>6️⃣ Workforce Skills Gap Analysis</h2>
+        <p>Analyze organization-wide skills gaps and hiring strategy.</p>
+
+        <button class="btn btn-primary demo-button" onclick="demoWorkforceAnalysis()">
+          Demo: Skills gap analysis for City of Tucson
+        </button>
+
+        <div id="output-workforce-analysis" class="output-box" style="display: none;">
+          <div id="output-workforce-analysis-text"></div>
+        </div>
+      </div>
+
+      <!-- Feature 7: Project Descriptions -->
+      <div class="demo-section">
+        <h2>7️⃣ Generate Job Descriptions</h2>
+        <p>AI-generated engaging job postings for your projects.</p>
+
+        <button class="btn btn-primary demo-button" onclick="demoProjectDescription()">
+          Demo: Job description for Data Analysis Platform
+        </button>
+
+        <div id="output-project-description" class="output-box" style="display: none;">
+          <div id="output-project-description-text"></div>
+        </div>
+      </div>
+
+      <!-- API Status -->
+      <div class="demo-section" style="background: #f0f0f0;">
+        <h2>📊 API Status & Usage</h2>
+        <p><strong>Claude AI Status:</strong> <span id="claude-status">Not initialized</span></p>
+        <p><strong>API Key Configured:</strong> <span id="api-key-status">No</span></p>
+        <p><strong>Features Available:</strong> <span id="features-available">Disabled until API key is set</span></p>
+
+        <div class="code-block">
+          Pricing: ~$0.003 per API call (with Claude 3.5 Sonnet)
+          <br>Free tier: Includes generous free credits
+          <br>Estimated cost for 100 insights/month: ~$0.30
+        </div>
+      </div>
+
+      <!-- Help Section -->
+      <div class="demo-section">
+        <h2>❓ Troubleshooting</h2>
+
+        <h3>API Key Issues</h3>
+        <p><strong>Error: "API Key not recognized"</strong></p>
+        <ul>
+          <li>Verify key is from https://console.anthropic.com (not OpenAI)</li>
+          <li>Check for extra spaces when pasting</li>
+          <li>Try regenerating the key in the console</li>
+        </ul>
+
+        <h3>Response Errors</h3>
+        <p><strong>Error: "Timeout" or "Network error"</strong></p>
+        <ul>
+          <li>Check your internet connection</li>
+          <li>Verify Claude API status at https://status.anthropic.com</li>
+          <li>Try again in a few seconds</li>
+        </ul>
+
+        <h3>Feature Not Working</h3>
+        <p><strong>Feature returns blank or error</strong></p>
+        <ul>
+          <li>Check browser console (F12) for error messages</li>
+          <li>Verify API key is correctly saved</li>
+          <li>Try a simpler demo first (match explanations)</li>
+          <li>Check that sample data is loaded</li>
+        </ul>
+      </div>
+
+      <!-- Developer Info -->
+      <div class="demo-section" style="background: #eef2ff; border-left: 4px solid var(--primary-color);">
+        <h2>👨‍💻 For Developers</h2>
+        <p>Integration code is in:</p>
+        <div class="code-block">
+          - claude-ai.js (All AI methods)
+          - config.js (Configuration & setup)
+          - AI_DEMO.html (This demo)
+        </div>
+
+        <p>To use in your own code:</p>
+        <div class="code-block">
+// After setting API key:
+const dev = DataManager.getDeveloperById(1);
+const proj = DataManager.getProjectById(1);
+
+await claudeAI.generateMatchExplanation(
+  dev, proj, 85
+);
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="matching-engine.js"></script>
+  <script src="claude-ai.js"></script>
+  <script src="config.js"></script>
+
+  <script>
+    // API Key Management
+    function setApiKey() {
+      const apiKey = document.getElementById('api-key-input').value.trim();
+      if (!apiKey) {
+        alert('Please enter an API key');
+        return;
+      }
+
+      if (initializeClaudeAI(apiKey)) {
+        localStorage.setItem('claude-api-key', apiKey);
+        document.getElementById('api-key-input').value = '••••••••••••••••••••••••';
+        updateApiStatus();
+        alert('✅ API key saved successfully!');
+      } else {
+        alert('❌ Failed to initialize Claude AI');
+      }
+    }
+
+    function clearApiKey() {
+      if (confirm('Clear saved API key?')) {
+        localStorage.removeItem('claude-api-key');
+        document.getElementById('api-key-input').value = '';
+        updateApiStatus();
+      }
+    }
+
+    function updateApiStatus() {
+      const hasKey = !!localStorage.getItem('claude-api-key');
+      const status = document.getElementById('api-status');
+      const keyStatus = document.getElementById('api-key-status');
+      const claudeStatus = document.getElementById('claude-status');
+      const featuresStatus = document.getElementById('features-available');
+
+      if (hasKey && claudeAI) {
+        status.className = 'status ready';
+        status.textContent = '✅ Ready to use';
+        keyStatus.textContent = 'Yes';
+        claudeStatus.textContent = '✅ Initialized';
+        featuresStatus.textContent = 'All features enabled';
+      } else if (hasKey) {
+        status.className = 'status pending';
+        status.textContent = '⏳ Initializing...';
+        keyStatus.textContent = 'Yes (loading)';
+        claudeStatus.textContent = '⏳ Loading...';
+      } else {
+        status.className = 'status error';
+        status.textContent = '❌ API key required';
+        keyStatus.textContent = 'No';
+        claudeStatus.textContent = '❌ Not available';
+        featuresStatus.textContent = 'Disabled';
+      }
+    }
+
+    // Demo Functions
+    async function showLoading(elementId) {
+      const element = document.getElementById(elementId);
+      element.style.display = 'block';
+      element.innerHTML = '<div class="loading">⏳</div> Generating AI response...';
+    }
+
+    async function showOutput(elementId, content) {
+      const element = document.getElementById(elementId);
+      element.style.display = 'block';
+      document.getElementById(elementId.replace('output-', 'output-') + '-text').innerHTML =
+        content.replace(/\n/g, '<br>');
+    }
+
+    async function demoMatchExplanation() {
+      if (!claudeAI) {
+        alert('❌ Claude AI not initialized. Please set your API key first.');
+        return;
+      }
+
+      showLoading('output-match-explanation');
+
+      try {
+        const developer = DataManager.getDeveloperById(1); // Sara Johnson
+        const project = DataManager.getProjectById(1); // Budget Analytics
+        const matches = MatchingEngine.findProjectsForDeveloper(1);
+        const match = matches.find(m => m.project.id === 1);
+
+        const explanation = await claudeAI.generateMatchExplanation(
+          developer,
+          project,
+          match.score,
+          match.matchedSkills,
+          match.missingSkills
+        );
+
+        showOutput('output-match-explanation', explanation);
+      } catch (error) {
+        document.getElementById('output-match-explanation').innerHTML =
+          `<p style="color: red;">❌ Error: ${error.message}</p>`;
+      }
+    }
+
+    async function demoCareerPath() {
+      if (!claudeAI) {
+        alert('❌ Claude AI not initialized. Please set your API key first.');
+        return;
+      }
+
+      showLoading('output-career-path');
+
+      try {
+        const developer = DataManager.getDeveloperById(4); // Sarah Williams
+        const path = await claudeAI.generateCareerPath(developer);
+        showOutput('output-career-path', path);
+      } catch (error) {
+        document.getElementById('output-career-path').innerHTML =
+          `<p style="color: red;">❌ Error: ${error.message}</p>`;
+      }
+    }
+
+    async function demoSkillGaps() {
+      if (!claudeAI) {
+        alert('❌ Claude AI not initialized. Please set your API key first.');
+        return;
+      }
+
+      showLoading('output-skill-gaps');
+
+      try {
+        const developer = DataManager.getDeveloperById(3); // James Chen
+        const project = DataManager.getProjectById(3); // Student Portal
+        const gaps = await claudeAI.analyzeSkillGaps(developer, project);
+        showOutput('output-skill-gaps', gaps);
+      } catch (error) {
+        document.getElementById('output-skill-gaps').innerHTML =
+          `<p style="color: red;">❌ Error: ${error.message}</p>`;
+      }
+    }
+
+    async function demoHiringInsights() {
+      if (!claudeAI) {
+        alert('❌ Claude AI not initialized. Please set your API key first.');
+        return;
+      }
+
+      showLoading('output-hiring-insights');
+
+      try {
+        const project = DataManager.getProjectById(1); // Budget Analytics
+        const matches = MatchingEngine.findDevelopersForProject(1);
+        const insights = await claudeAI.generateHiringInsights(project, matches);
+        showOutput('output-hiring-insights', insights);
+      } catch (error) {
+        document.getElementById('output-hiring-insights').innerHTML =
+          `<p style="color: red;">❌ Error: ${error.message}</p>`;
+      }
+    }
+
+    async function demoSuccessPrediction() {
+      if (!claudeAI) {
+        alert('❌ Claude AI not initialized. Please set your API key first.');
+        return;
+      }
+
+      showLoading('output-success-prediction');
+
+      try {
+        const developer = DataManager.getDeveloperById(10); // Emily White
+        const project = DataManager.getProjectById(3); // Student Portal
+        const prediction = await claudeAI.predictMatchSuccess(developer, project, 85);
+        showOutput('output-success-prediction', prediction);
+      } catch (error) {
+        document.getElementById('output-success-prediction').innerHTML =
+          `<p style="color: red;">❌ Error: ${error.message}</p>`;
+      }
+    }
+
+    async function demoWorkforceAnalysis() {
+      if (!claudeAI) {
+        alert('❌ Claude AI not initialized. Please set your API key first.');
+        return;
+      }
+
+      showLoading('output-workforce-analysis');
+
+      try {
+        const projects = DataManager.getOrganizationProjects(1);
+        const developers = DataManager.getDevelopers();
+        const analysis = await claudeAI.analyzeWorkforceGaps(
+          'City of Tucson',
+          projects,
+          developers
+        );
+        showOutput('output-workforce-analysis', analysis);
+      } catch (error) {
+        document.getElementById('output-workforce-analysis').innerHTML =
+          `<p style="color: red;">❌ Error: ${error.message}</p>`;
+      }
+    }
+
+    async function demoProjectDescription() {
+      if (!claudeAI) {
+        alert('❌ Claude AI not initialized. Please set your API key first.');
+        return;
+      }
+
+      showLoading('output-project-description');
+
+      try {
+        const description = await claudeAI.generateProjectDescription(
+          'Data Analysis Platform',
+          'Data Analysis Platform',
+          ['Python', 'Data Analysis', 'Database Design']
+        );
+        showOutput('output-project-description', description);
+      } catch (error) {
+        document.getElementById('output-project-description').innerHTML =
+          `<p style="color: red;">❌ Error: ${error.message}</p>`;
+      }
+    }
+
+    // Initial status check
+    window.addEventListener('load', () => {
+      updateApiStatus();
+    });
+  </script>
+</body>
+</html>
